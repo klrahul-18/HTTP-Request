@@ -11,6 +11,7 @@
 
 window.onload = function () {
   var product = document.getElementById('product');
+  var spinner = document.getElementById('spinner');
   fetch(`https://fakestoreapi.com/products`, { method: 'GET' })
     .then(function (res) {
       //console.log(res.json())
@@ -23,7 +24,7 @@ window.onload = function () {
         let pdata = data[i]
         //console.log(pdata.image);
         let pcard = `<div class="col-md-3 mt-3">
-        <div class="card">
+        <div class="card animate_animated animate_fadeIn">
         <img src="${pdata.image}" class="card-img-top img-fluid">
           <div class="card-body">
             <h5 class="card-title">${pdata.title}</h5>
@@ -37,6 +38,7 @@ window.onload = function () {
          </div>
         </div>`
         product.innerHTML += pcard;
+        spinner.style.display = "none";
       }
     })
     .catch(function (err) {
